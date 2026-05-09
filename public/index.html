@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#101316">
+    <title>Codex Mobile Taskpad</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <section class="gate" id="gate" aria-label="访问验证">
+      <form class="gate-box" id="gateForm">
+        <p class="eyebrow">Private Access</p>
+        <h1>输入访问码</h1>
+        <input id="accessCode" autocomplete="one-time-code" placeholder="访问码">
+        <button type="submit">进入任务台</button>
+        <p class="gate-error" id="gateError"></p>
+      </form>
+    </section>
+
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Mobile Taskpad</p>
+          <h1>Codex 任务台</h1>
+        </div>
+        <span class="status-dot" id="connectionStatus" title="连接状态"></span>
+      </header>
+
+      <section class="composer" aria-label="新任务">
+        <input id="taskTitle" maxlength="80" placeholder="一句话标题">
+        <textarea id="taskMessage" rows="5" placeholder="把想让 Codex 做的事写在这里"></textarea>
+        <div class="composer-actions">
+          <label class="priority-toggle">
+            <input type="checkbox" id="highPriority">
+            <span>加急</span>
+          </label>
+          <button id="sendTask" type="button">发送任务</button>
+        </div>
+      </section>
+
+      <section class="filters" aria-label="任务筛选">
+        <button class="filter active" type="button" data-filter="all">全部</button>
+        <button class="filter" type="button" data-filter="new">新任务</button>
+        <button class="filter" type="button" data-filter="working">进行中</button>
+        <button class="filter" type="button" data-filter="done">完成</button>
+      </section>
+
+      <section class="task-list" id="taskList" aria-live="polite"></section>
+    </main>
+
+    <template id="taskTemplate">
+      <article class="task">
+        <div class="task-head">
+          <div>
+            <h2></h2>
+            <p class="meta"></p>
+          </div>
+          <span class="pill"></span>
+        </div>
+        <p class="message"></p>
+        <div class="task-actions">
+          <button type="button" data-status="accepted">接收</button>
+          <button type="button" data-status="working">进行中</button>
+          <button type="button" data-status="done">完成</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
+
