@@ -1,0 +1,6 @@
+data
+server.log
+server.err.log
+*.pid
+.npm-cache
+
