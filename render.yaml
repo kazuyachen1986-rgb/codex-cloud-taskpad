@@ -3,13 +3,6 @@ services:
     name: codex-cloud-taskpad
     env: docker
     plan: free
-    disk:
-      name: taskpad-data
-      mountPath: /data
-      sizeGB: 1
     envVars:
-      - key: DATA_DIR
-        value: /data
       - key: ACCESS_CODE
         generateValue: true
-
